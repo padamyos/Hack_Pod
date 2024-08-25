@@ -24,6 +24,7 @@ export default {
                             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">เกี่ยวกับ</a>
                             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Services</a>
                             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ติดต่อ</a>
+                            <RouterLink to="/login" class="p-10 text-white">เข้าสู่ระบบ</RouterLink>
                         </div>
                     </div>
                 </div>
