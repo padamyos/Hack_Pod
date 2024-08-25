@@ -8,7 +8,6 @@ import Login from './view/Login.vue';
 import Footer from './components/Footer.vue'; // Import Footer component
 // backend
 import axios from 'axios';
->>>>>>> Stashed changes
 </script>
 
 <template>
