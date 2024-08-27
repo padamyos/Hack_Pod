@@ -1,7 +1,9 @@
 <script setup>
+
 import { ref } from 'vue';
 import Navbar from './components/Navbar.vue';
 import Login from './view/Login.vue';
+import Home from './view/Home.vue';
 // import SignUp from './view/SignUp.vue';
 
 import Footer from './components/Footer.vue'; // Import Footer component
@@ -9,6 +11,8 @@ import Footer from './components/Footer.vue'; // Import Footer component
 import axios from 'axios';
 
 </script>
+
+
 
 <template>
     <div>
