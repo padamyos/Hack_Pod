@@ -9,22 +9,26 @@ export default {
 };
 </script>
 <template>
-    <nav class="bg-gray-800 ">
+    <nav class="bg-white py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-row-reverse justify-between h-16">
-                <div class="flex items-center">
+            <div class=" justify-between h-16 ">
+                <div class="flex flex-row items-center font-black text-lg">
                     <!-- Logo -->
-                    <!-- <div class="flex-shrink-0">
-                        <img class="h-8 w-8" src="/path/to/logo.png" alt="Logo">
-                    </div> -->
+                    <div class="text-[#7300FF] basis-4/6 text-4xl">
+                        <h1>SMOKE DETECTOR</h1>
+                    </div> 
                     <!-- Links -->
-                    <div class="hidden md:block  ">
+                    <div class="hidden md:block   ">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ">หน้าหลัก</a>
-                            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">เกี่ยวกับ</a>
-                            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Services</a>
-                            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ติดต่อ</a>
-                            <RouterLink to="/login" class="p-10 text-white">เข้าสู่ระบบ</RouterLink>
+                            
+                            <RouterLink to="/" class=" text-black">
+                                หน้าหลัก
+                            </RouterLink>
+                            <a href="#" class="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">เกี่ยวกับ</a>
+                            <a href="#" class="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">ติดต่อ</a>
+                            <RouterLink to="/login" class="px-4 py-2 bg-[#6A00FF] text-white rounded-xl">
+                                เข้าสู่ระบบ
+                            </RouterLink>
                         </div>
                     </div>
                 </div>
