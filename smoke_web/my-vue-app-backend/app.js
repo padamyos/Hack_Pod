@@ -41,17 +41,7 @@ app.get('/users', async (req, res) => {
     }
 });
 
-// app.post('/users/add', async (req, res) => {
-//     const { name, email, password } = req.body;
-//     const newUser = new User({ name, email, password });
 
-//     try {
-//         await newUser.save();
-//         res.json('User added!');
-//     } catch (err) {
-//         res.status(400).json('Error: ' + err);
-//     }
-// });
 
 
 app.post('/users/add', async (req, res) => {
