@@ -29,17 +29,11 @@
                         Password
                     </label>
                     <input type="password" v-model="password" id="password" placeholder="กรุณาป้อนรหัสผ่าน"
-                        class="w-full px-4 py-2 border rounded text-black" 
+                        class="w-full px-4 py-2 border rounded text-white" 
                     />
 
                 </div>
-                <div class="mb-4">
-                    <label for="password" class="block mb-2">
-                        Password
-                    </label>
-                    <input type="password" v-model="password" id="password" placeholder="กรุณาป้อนรหัสผ่าน"
-                        class="w-full px-4 py-2 border rounded text-black" />
-                </div>
+                
                 <button type="submit" class="bg-green-500 text-white w-full py-2 rounded">
                     Login
                 </button>
@@ -51,37 +45,6 @@
 
 <script>
 import axios from 'axios';
-
-export default {
-    name: 'Login',
-    data() {
-        return {
-            email: '',   // Capture email input
-            password: '', // Capture password input
-        };
-    },
-    methods: {
-        async userLogin() {
-      try {
-        const response = await axios.post('http://localhost:5000/users/login', {
-          email: this.email,
-          password: this.password,
-        });
-        console.log(response.data);
-        localStorage.setItem('userToken', response.data.token);
-        localStorage.setItem('username', response.data.username);
-        alert('User logged in successfully');
-        this.$router.push({ name: 'Home' });
-      } catch (err) {
-        console.error(err);
-        alert('Error logging in');
-      }
-    },
-        
-        
-    },
-}
-=======
 import Swal from 'sweetalert2';
 
 export default
