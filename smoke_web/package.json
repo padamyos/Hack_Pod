@@ -9,17 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-
     "axios": "^1.7.5",
+    "bcryptjs": "^2.4.3",
     "vue": "^3.4.35",
-<<<<<<< Updated upstream
-    "vue-router": "^4.4.3"
 
-=======
     "vue-router": "^4.4.3",
     "vue-sweetalert2": "^5.0.11",
     "vuex": "^4.0.2"
->>>>>>> Stashed changes
+
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",
