@@ -19,14 +19,20 @@ export default {
                     </div> 
                     <!-- Links -->
                     <div class="hidden md:block   ">
-                        <div class="ml-10 flex items-baseline space-x-4">
-                            
+                        <div class=" flex items-baseline pl-32 space-x-4">
+
                             <RouterLink to="/" class=" text-black">
                                 หน้าหลัก
                             </RouterLink>
-                            <a href="#" class="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">เกี่ยวกับ</a>
-                            <a href="#" class="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">ติดต่อ</a>
-                            <RouterLink to="/login" class="px-4 py-2 bg-[#6A00FF] text-white rounded-xl">
+                            <a href="#"
+                                class="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">เกี่ยวกับ</a>
+                            <a href="#"
+                                class="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">ติดต่อ</a>
+                            <RouterLink to="dashboard" class="px-4 py-2 bg-[#6A00FF] text-white rounded-xl">
+                                Dashbord
+                            </RouterLink>
+
+                            <RouterLink to="/login" class="btn btn-active btn-primary text-white" >
                                 เข้าสู่ระบบ
                             </RouterLink>
                         </div>
