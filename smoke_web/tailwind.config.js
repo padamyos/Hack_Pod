@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {},
+    // สร้างฟอนต์ที่เราใช้งาน
+    fontFamily: {
+      'sans': ['Kanit , sans-serif'],
+    }
   },
-  plugins: [],
+  plugins: [
+    // ใช้งาน daisyUI
+    require('daisyui'),
+  ],
 }

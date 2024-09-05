@@ -2,6 +2,7 @@
 
 import { ref } from 'vue';
 import Navbar from './components/Navbar.vue';
+import NavbarDaisy from './components/Navbar_daisy.vue';
 import Login from './view/Login.vue';
 import Home from './view/Home.vue';
 // import SignUp from './view/SignUp.vue';
@@ -16,7 +17,7 @@ import axios from 'axios';
 
 <template>
     <div>
-        <Navbar />
+        <NavbarDaisy />
 
         <main>
             <RouterView />

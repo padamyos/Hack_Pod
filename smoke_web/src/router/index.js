@@ -2,12 +2,16 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import Login from "../view/Login.vue";
 import Home from "../view/Home.vue";
+
 import Dashboard from "../view/Dashbord.vue"
 import Register from "../view/Register.vue";
+import Logout from "../view/Logout.vue";
+
 
 function isLoggedIn() {
   return !!localStorage.getItem('userToken');
 }
+
 
 
 
@@ -25,6 +29,13 @@ const routes = [
     name: "Login",
     component: Login,
   },
+
+  {
+    path: "/logout",
+    name: "Logout",
+    component: Logout,
+  },
+
   {
     path: '/register',
     name: 'Register',
@@ -36,6 +47,7 @@ const routes = [
     component: Dashboard,
     meta: { requiresAuth: true }, // กำหนด meta เพื่อระบุว่าหน้านี้ต้องการการล็อกอิน
   },
+
 ];
 
 const router = createRouter({
@@ -44,18 +56,6 @@ const router = createRouter({
 });
 
 
-// router.beforeEach((to, from, next) => {
-//   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     if (!isLoggedIn()) {
-//       next({ name: 'Login' });
-//     } else {
-//       next();
-//     }
-//   } else {
-//     next();
-//   }
-// });
-// ใช้ Navigation Guards เพื่อตรวจสอบสถานะการล็อกอิน
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!isLoggedIn()) {
