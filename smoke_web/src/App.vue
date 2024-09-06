@@ -16,7 +16,7 @@ import axios from 'axios';
 
 
 <template>
-    <div>
+    <div class="">
         <NavbarDaisy />
 
         <main>

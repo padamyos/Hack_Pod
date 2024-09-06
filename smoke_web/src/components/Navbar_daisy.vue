@@ -1,12 +1,12 @@
 <template>
-    <div class="navbar bg-base-100">
+    <div class="navbar bg-white">
 
         <div class="flex-1">
-            <RouterLink to="/" class="btn btn-ghost text-xl text-[#7300FF]">SMOKE DETECTOR</RouterLink>
+            <RouterLink to="/home" class="btn btn-ghost text-xl text-[#7300FF]">SMOKE DETECTOR</RouterLink>
         </div>
         <div class="flex-none gap-2">
-            <div class="form-control">
-                <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+            <div class="form-control pr-10">
+                <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto " />
             </div>
 
             <div>
@@ -35,7 +35,7 @@
                         </a>
                     </li>
                     <li><a>Settings</a></li>
-                    <li><a>Logout</a></li>
+                    <li><a @click="logout" >Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -45,6 +45,20 @@
 <script>
 export default {
     name: 'NavbarDaisy',
+    methods: {
+      logout() {
+        // ลบ token หรือข้อมูลผู้ใช้จาก localStorage
+        localStorage.removeItem('userToken');
+        // นำผู้ใช้ไปยังหน้า Login
+        this.$router.push({ name: 'Login' });
+        Swal.fire({
+                        title: 'Error!',
+                        text: 'Invalid email or password',
+                        icon: 'error',
+                        confirmButtonText: 'OK!'
+                    })
+      },
+    },
 
 }
 </script>
