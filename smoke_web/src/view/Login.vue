@@ -20,7 +20,7 @@
                     id="email" 
 
                     placeholder="กรุณาป้อนอีเมล"
-                    class="w-full px-4 py-2 border rounded text-black" 
+                    class="w-full px-4 py-2 border rounded text-white " 
 
                     />
                 </div>
@@ -66,7 +66,7 @@ export default
                     console.log(response.data);
                     localStorage.setItem('userToken', response.data.token);
                     localStorage.setItem('username', response.data.username);
-                    alert('User logged in successfully');
+                    // alert('User logged in successfully');
                     Swal.fire({
                         icon: 'success',
                         title: 'Logged in successfully',
