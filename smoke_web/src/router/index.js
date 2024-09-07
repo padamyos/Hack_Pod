@@ -8,6 +8,7 @@ import Register from "../view/Register.vue";
 import Logout from "../view/Logout.vue";
 
 
+
 function isLoggedIn() {
   return !!localStorage.getItem('userToken');
 }
@@ -24,6 +25,8 @@ const routes = [
     name: "Login",
     component: Login,
   },
+  
+  
   {
     path: "/home",
     name: "Home",
