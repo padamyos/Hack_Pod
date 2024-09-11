@@ -4,21 +4,21 @@
 export default {
     name: 'Home',
     methods: {
-    showAlert() {
-      // Use sweetalert2
-      Vue.swal('Hello Vue world!!!');
+        showAlert() {
+            // Use sweetalert2
+            Vue.swal('Hello Vue world!!!');
+        },
     },
-},
 }
 </script>
 
-<template>
-    <div>
-        <div class="flex flex-row bg-white py-44">
+<template >
+    <div class="">
+        <div class="flex flex-row  py-44 " >
 
             <div class=" basis-2/3 pl-16  ">
-                <button @click="showAlert">Hello world</button>
-                <button  class=" bg-gradient-to-r from-[#0019FF] to-[#FF0000] text-white p-2 rounded-xl ">
+    
+                <button class=" bg-gradient-to-r from-[#0019FF] to-[#FF0000] text-white p-2 rounded-xl ">
                     HACK. POD. HACK8
                 </button>
                 <p class="py-5 text-[#CFCFCF] text-3xl">
@@ -38,9 +38,40 @@ export default {
             </div>
         </div>
 
-        <div class="bg-black">
-            <h1>New</h1>
+        <div class="">
+            <div class=" flex flex-row">
+                <div class="card card-compact bg-base-100 w-80 shadow-xl mx-5 ">
+                    <figure>
+                        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                            alt="Shoes" />
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title">Shoes!</h2>
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div class="card-actions justify-end">
+                            <button class="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-compact bg-base-100 max-w-80 shadow-xl">
+                    <figure>
+                        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                            alt="Shoes" />
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title">Shoes!</h2>
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div class="card-actions justify-end">
+                            <button class="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
         </div>
+        
 
 
     </div>
