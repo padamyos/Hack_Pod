@@ -30,8 +30,13 @@
                 <a href="#"
                     class="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">เกี่ยวกับ</a>
                 <a href="#"
-                    class="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">ติดต่อ</a>
-                <RouterLink to="dashboard" class="btn btn-active btn-primary">
+                    class="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">
+                    ติดต่อ
+                </a>
+                <RouterLink to="" class="btn btn-outline btn-primary mx-3 ">
+                    จัดการอุปกรณ์
+                </RouterLink>
+                <RouterLink to="dashboard" class="btn btn-outline btn-primary ">
                     Dashbord
                 </RouterLink>
             </div>
