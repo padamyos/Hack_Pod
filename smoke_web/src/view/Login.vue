@@ -3,7 +3,7 @@
         <div class=" items-center p-28">
 
             <div class="bg-white rounded-full p-56 ">
-
+<h1 class=" text-black font-black ">Logo</h1>
             </div>
         </div>
         <div class="w-1/3 pt-36 text-white">
