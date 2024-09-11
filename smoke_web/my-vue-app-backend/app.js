@@ -27,6 +27,7 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", UserSchema);
 
+
 // API route สำหรับการล็อกอิน
 app.post("/users/login", async (req, res) => {
   const { email, password } = req.body; // ตรวจสอบว่าข้อมูลถูกส่งมาใน req.body
