@@ -15,4 +15,9 @@ export default {
     // ใช้งาน daisyUI
     require('daisyui'),
   ],
+  // กำหนด theme ให้กับ daisyUI
+  daisyui: {
+    themes: ["light", "dark", "halloween"],
+  },
+
 }
