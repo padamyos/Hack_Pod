@@ -6,14 +6,26 @@ import Home from "../view/Home.vue";
 import Dashboard from "../view/Dashbord.vue"
 import Register from "../view/Register.vue";
 import Logout from "../view/Logout.vue";
-
-
+import ManageDevices from "../view/ManageDevices/manage.vue"
 
 function isLoggedIn() {
   return !!localStorage.getItem('userToken');
 }
 
+function isAdmin() {
+  const role = JSON.parse(localStorage.getItem('role'));
+  if(role === 'admin'){
+    return true;
+}
+}
 
+// ดึงข้อมูล user จาก localStorage และ return role ของ user ออกมา
+// function getUserRole() {
+  
+//     const role = JSON.parse(localStorage.getItem('role'));
+//     return role ? role : null;
+  
+// }
 
 
 const routes = [
@@ -31,9 +43,15 @@ const routes = [
     path: "/home",
     name: "Home",
     component: Home,
-    meta: { requiresAuth: true }, // กำหนด meta เพื่อระบุว่าหน้านี้ต้องการการล็อกอิน
+
   },
 
+  {
+    path: "/devices",
+    name: "ManageDevices",
+    component: ManageDevices,
+  },
+  
   {
     path: "/logout",
     name: "Logout",
@@ -44,6 +62,7 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register, // เพิ่มเส้นทางสำหรับการลงทะเบียน
+    meta: { requiresAdmin: true }, // กำหนด meta เพื่อระบุว่าหน้านี้ต้อง login ด้วย admin
   },
   {
     path: "/dashboard",
@@ -61,14 +80,23 @@ const router = createRouter({
 
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!isLoggedIn()) {
-      next({ name: "Login" }); // ถ้ายังไม่ได้ล็อกอิน ให้ไปที่หน้า Login
+  if (to.matched.some(record => record.meta.requiresAdmin)) {
+    if (!isLoggedIn() || !isAdmin(  ) ) {
+      next(
+        
+        { name: 'Login' }
+      );
     } else {
-      next(); // ถ้าล็อกอินแล้ว ให้ไปที่หน้าที่ต้องการ
+      next();
+    }
+  } else if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!isLoggedIn()) {
+      next({ name: 'Login' });
+    } else {
+      next();
     }
   } else {
-    next(); // ถ้าหน้านั้นไม่ต้องการการล็อกอิน ให้ไปที่หน้าที่ต้องการ
+    next();
   }
 });
 

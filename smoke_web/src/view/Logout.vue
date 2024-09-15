@@ -13,7 +13,8 @@
       logout() {
         // ลบ token หรือข้อมูลผู้ใช้จาก localStorage
         localStorage.removeItem('userToken');
-        
+        localStorage.removeItem('username');
+        localStorage.removeItem('role');
         // นำผู้ใช้ไปยังหน้า Login
         // this.$router.push({ name: 'Login' });
         
