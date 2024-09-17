@@ -89,6 +89,48 @@ app.post("/users/register", async (req, res) => {
  
 });
 
+// API route สำหรับการดึงข้อมูล email และ password ของผู้ใช้ทั้งหมด
+app.get("/users", async (req, res) => {
+  try {
+    const users = await User.find({}, 'email password'); // ดึงเฉพาะฟิลด์ email และ password
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+// API CRUD สำหรับการจัดการข้อมูลผู้ใช้
+
+// API delete สำหรับลบข้อมูลผู้ใช้
+app.delete("/users/:email", async (req, res) => {
+  try {
+    const userId = req.params.email;
+    await User.findByIdAndDelete(userId);
+    res.json({ message: "User deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// API update สำหรับอัพเดทข้อมูลผู้ใช้
+app.put("/users/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const { email, password } = req.body;
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { email, password },
+      { new: true }
+    );
+    res.json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
