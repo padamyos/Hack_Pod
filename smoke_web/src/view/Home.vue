@@ -16,7 +16,7 @@ export default {
     <div class="">
         <div class="flex flex-row  py-44 ">
 
-            <div class=" basis-2/3 pl-16  ">
+            <div class=" basis-2/3 pl-28  ">
 
                 <button class=" bg-gradient-to-r from-[#0019FF] to-[#FF0000] text-white p-2 rounded-xl ">
                     HACK. POD. HACK8

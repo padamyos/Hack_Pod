@@ -22,6 +22,17 @@ connection.once('open', () => {
     console.log('MongoDB database connection established successfully');
 });
 
+// Device Schema
+const DeviceSchema = new mongoose.Schema({
+  
+  position: { type: String, required: true },
+  status: { type: String, required: true },
+
+});
+
+
+
+
 const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
@@ -29,7 +40,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ['admin', 'user'],
     default: 'user'
-  }
+  },
+  devices: DeviceSchema
+  
 });
 
 const User = mongoose.model("User", UserSchema);

@@ -68,6 +68,7 @@ export default
                     
                     // console.log(user);
                     console.log('admin' == user);
+                    console.log(user);
                   
 
                     
@@ -77,7 +78,13 @@ export default
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    this.$router.push({ name: 'Home' });
+                    if (user == 'admin') {
+                        this.$router.push({ name: 'ChangeUser' });
+                    } else {
+                        console.log(user);
+                        this.$router.push({ name: 'Home' });
+                    }
+                    // this.$router.push({ name: 'Home' });
                 } catch (err) {
                     console.error(err);
 
