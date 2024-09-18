@@ -8,7 +8,7 @@ import Register from "../view/Register.vue";
 import Logout from "../view/Logout.vue";
 import ManageDevices from "../view/ManageDevices/manage.vue"
 
-import UserManagement from "../view/Admin/ChangeUser.vue"
+import ChangeUser from "../view/Admin/ChangeUser.vue"
 
 function isLoggedIn() {
   return !!localStorage.getItem('userToken');
@@ -68,9 +68,9 @@ const routes = [
   },
 
   {
-    path: '/userManagement',
-    name: 'UserManagement',
-    component: UserManagement, // เพิ่มเส้นทางสำหรับการลงทะเบียน
+    path: '/changeUser',
+    name: 'ChangeUser',
+    component: ChangeUser, // เพิ่มเส้นทางสำหรับการลงทะเบียน
     meta: { requiresAdmin: true }, // กำหนด meta เพื่อระบุว่าหน้านี้ต้อง login ด้วย admin
   },
   {
@@ -97,10 +97,13 @@ router.beforeEach((to, from, next) => {
       );
     } else {
       // ถ้าเป็น admin ให้ไปหน้าถัดไป
-      next();
+      next(
+        
+
+      );
     }
   } else if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!isLoggedIn()) {
+    if (!isLoggedIn() ) {
       next({ name: 'Login' });
     } else {
       next();
