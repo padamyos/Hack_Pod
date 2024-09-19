@@ -62,7 +62,7 @@ exports.deleteUser = async (req, res) => {
 // ฟังก์ชันสำหรับอัพเดทผู้ใช้
 exports.updateUser = async (req, res) => {
   try {
-    const userId = req.params.id;
+    const userId = req.params._id;
     const { email, password } = req.body;
     const updatedUser = await User.findByIdAndUpdate(
       userId,
