@@ -44,6 +44,7 @@ export default
         name: 'Login',
         data() {
             return {
+         
                 email: '',   // Capture email input
                 password: '', // Capture password input
                 role: '',     // Capture role input
@@ -58,8 +59,11 @@ export default
                     });
                     console.log(response.data);
                     localStorage.setItem('userToken', response.data.token);
+                    localStorage.setItem('userToken', response.data.token);
                     localStorage.setItem('username', response.data.username);
                     localStorage.setItem('role', JSON.stringify(response.data.role));
+                    localStorage.setItem('_id', response.data._id);
+                    console.log(localStorage.getItem('_id'));
 
                     // alert('User logged in successfully');
 
@@ -68,7 +72,7 @@ export default
                     
                     // console.log(user);
                     console.log('admin' == user);
-                    console.log(user);
+                    console.log(response.data);
                   
 
                     

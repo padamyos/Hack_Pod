@@ -9,5 +9,6 @@ router.post("/register", userController.registerUser);
 router.get("/", userController.getUsers);
 router.delete("/:email", userController.deleteUser);
 router.put("/:_id", userController.updateUser);
+router.put("/:_id/devices", userController.addDevice);
 
 module.exports = router;
