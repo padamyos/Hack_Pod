@@ -17,7 +17,7 @@ exports.loginUser = async (req, res) => {
     }
 
     const token = "yourGeneratedToken"; // สร้าง token ของจริงตามที่คุณต้องการ
-    res.json({ token, username: user.email, role: user.role });
+    res.json({ token, username: user.email, role: user.role , _id: user._id});
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
@@ -62,7 +62,7 @@ exports.deleteUser = async (req, res) => {
 // ฟังก์ชันสำหรับอัพเดทผู้ใช้
 exports.updateUser = async (req, res) => {
   try {
-    const userId = req.params.id;
+    const userId = req.params._id;
     const { email, password } = req.body;
     const updatedUser = await User.findByIdAndUpdate(
       userId,
@@ -72,5 +72,26 @@ exports.updateUser = async (req, res) => {
     res.json(updatedUser);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
+  }
+};
+
+// ฟังก์ชันสำหรับเพิ่มอุปกรณ์ให้กับผู้ใช้
+exports.addDevice = async (req, res) => {
+  const userId = req.params._id; 
+  const { position, status } = req.body;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // เพิ่มอุปกรณ์ใหม่เข้าไปในอาร์เรย์ devices
+    user.devices.push({ position, status });
+    await user.save();
+
+    res.status(201).json({ message: "Device added successfully", devices: user.devices });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
   }
 };

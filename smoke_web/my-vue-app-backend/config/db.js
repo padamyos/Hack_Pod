@@ -1,6 +1,6 @@
 // config/db.js
 const mongoose = require("mongoose");
-
+// เชื่อมต่อฐานข้อมูล MongoDB
 const connectDB = async () => {
   try {
     const uri = process.env.MONGODB_URI;
