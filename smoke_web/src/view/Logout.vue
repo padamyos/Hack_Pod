@@ -15,6 +15,7 @@
         localStorage.removeItem('userToken');
         localStorage.removeItem('username');
         localStorage.removeItem('role');
+        localStorage.removeItem('_id');
         // นำผู้ใช้ไปยังหน้า Login
         // this.$router.push({ name: 'Login' });
         
