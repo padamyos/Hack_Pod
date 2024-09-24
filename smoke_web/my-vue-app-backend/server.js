@@ -16,7 +16,11 @@ app.use(cors());
 
 // Routes
 const userRoutes = require("./routes/userRoutes");
+const deviceRoutes  = require("./routes/deviceRoutes");
+
+
 app.use("/users", userRoutes);
+app.use("/devices",deviceRoutes  );
 
 // Server
 const PORT = process.env.PORT || 5000;
