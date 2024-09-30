@@ -69,3 +69,33 @@ exports.deleteDevice = async (req, res) => {
     res.status(500).json({ message: "Server error", error });
   }
 };
+
+
+// อัปเดตข้อมูลในฟิลด์ data ของอุปกรณ์โดยอ้างอิงจาก deviceId real time จาก sensor
+exports.updateDeviceData = async (req, res) => {
+  const { deviceId } = req.params;  // รับ deviceId จาก URL
+  const {pm1, pm25, pm10, temperature, humidity } = req.body;  // ข้อมูลที่จะอัปเดต
+
+  try {
+    // หาอุปกรณ์ตาม deviceId
+    const device = await Device.findOne({ deviceId });
+    if (!device) {
+      return res.status(404).json({ message: 'Device not found' });
+    }
+
+    // อัปเดตข้อมูล data
+    device.data.pm1 = pm1;
+    device.data.pm25 = pm25;
+    device.data.pm10 = pm10;
+    device.data.temperature = temperature;
+    device.data.humidity = humidity;
+    device.data.lastUpdated = Date.now();  // อัปเดตเวลาที่มีการเปลี่ยนแปลงล่าสุด
+
+    // บันทึกข้อมูลอุปกรณ์ที่อัปเดตแล้ว
+    await device.save();
+
+    res.status(200).json({ message: 'Device data updated successfully', device });
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating device data', error });
+  }
+};
