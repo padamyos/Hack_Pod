@@ -8,8 +8,11 @@ router.get('/:ownerId', deviceController.getDevicesByOwner);
 router.post('/add', deviceController.addDevice);
 router.delete('/:deviceId', deviceController.deleteDevice);
 
-// เส้นทางสำหรับเพิ่มข้อมูลใหม่ลงในอุปกรณ์
+// เส้นทางสำหรับ update ข้อมูลใหม่ลงในอุปกรณ์
 router.put('/data/:deviceId', deviceController.updateDeviceData);
+
+// เส้นทางสำหรับเพิ่มข้อมูลใหม่ลงในอุปกรณ์
+router.post('/data/:deviceId', deviceController.addDeviceData); 
 
 
 module.exports = router;
