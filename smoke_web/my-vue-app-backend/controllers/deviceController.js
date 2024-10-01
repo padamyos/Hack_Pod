@@ -99,3 +99,39 @@ exports.updateDeviceData = async (req, res) => {
     res.status(500).json({ message: 'Error updating device data', error });
   }
 };
+
+
+// เพิ่มข้อมูลใหม่ใน array data ของอุปกรณ์
+exports.addDeviceData = async (req, res) => {
+  const { deviceId } = req.params;
+  const { pm1, pm25, pm10, temperature, humidity, co2 } = req.body;
+
+  try {
+    // ค้นหาอุปกรณ์ที่ต้องการเพิ่มข้อมูล
+    const device = await Device.findOne({ deviceId });
+    if (!device) {
+      return res.status(404).json({ message: "Device not found" });
+    }
+
+    // สร้าง object ข้อมูลใหม่
+    const newData = {
+      pm1,
+      pm25,
+      pm10,
+      temperature,
+      humidity,
+      co2,
+      timestamp: new Date()
+    };
+
+    // เพิ่มข้อมูลใหม่เข้าไปใน array data
+    device.data.push(newData);
+
+    // บันทึกข้อมูลในฐานข้อมูล
+    await device.save();
+
+    res.status(200).json({ message: "Data added successfully", device });
+  } catch (error) {
+    res.status(500).json({ message: "Error adding data to device", error });
+  }
+};
