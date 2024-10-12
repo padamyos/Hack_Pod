@@ -49,7 +49,7 @@ const routes = [
   },
 
   {
-    path: "/devices",
+    path: "/device",
     name: "ManageDevices",
     component: ManageDevices,
   },

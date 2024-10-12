@@ -74,7 +74,7 @@ exports.deleteDevice = async (req, res) => {
 // อัปเดตข้อมูลในฟิลด์ data ของอุปกรณ์โดยอ้างอิงจาก deviceId real time จาก sensor
 exports.updateDeviceData = async (req, res) => {
   const { deviceId } = req.params;  // รับ deviceId จาก URL
-  const {pm1, pm25, pm10, temperature, humidity } = req.body;  // ข้อมูลที่จะอัปเดต
+  const {pm1, pm2_5, pm10, temperature, humidity } = req.body;  // ข้อมูลที่จะอัปเดต
 
   try {
     // หาอุปกรณ์ตาม deviceId
@@ -85,7 +85,7 @@ exports.updateDeviceData = async (req, res) => {
 
     // อัปเดตข้อมูล data
     device.data.pm1 = pm1;
-    device.data.pm25 = pm25;
+    device.data.pm2_5 = pm2_5;
     device.data.pm10 = pm10;
     device.data.temperature = temperature;
     device.data.humidity = humidity;
@@ -104,7 +104,7 @@ exports.updateDeviceData = async (req, res) => {
 // เพิ่มข้อมูลใหม่ใน array data ของอุปกรณ์
 exports.addDeviceData = async (req, res) => {
   const { deviceId } = req.params;
-  const { pm1, pm25, pm10, temperature, humidity, co2 } = req.body;
+  const { pm1, pm2_5, pm10, temperature, humidity, co2 } = req.body;
 
   try {
     // ค้นหาอุปกรณ์ที่ต้องการเพิ่มข้อมูล
@@ -116,7 +116,7 @@ exports.addDeviceData = async (req, res) => {
     // สร้าง object ข้อมูลใหม่
     const newData = {
       pm1,
-      pm25,
+      pm2_5,
       pm10,
       temperature,
       humidity,
@@ -133,5 +133,35 @@ exports.addDeviceData = async (req, res) => {
     res.status(200).json({ message: "Data added successfully", device });
   } catch (error) {
     res.status(500).json({ message: "Error adding data to device", error });
+  }
+};
+
+
+
+
+// ดึงรายการอุปกรณ์ทั้งหมด
+exports.getAllDevices = async (req, res) => {
+  try {
+    const devices = await Device.find({}, 'deviceId position'); // ดึงเฉพาะ deviceId และตำแหน่ง
+    res.status(200).json(devices);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching devices list", error });
+  }
+};
+
+
+// ดึงข้อมูลทั้งหมดจากอุปกรณ์ที่กำหนด
+exports.getDeviceData = async (req, res) => {
+  const { deviceId } = req.params;
+
+  try {
+    const device = await Device.findOne({ deviceId });
+    if (!device) {
+      return res.status(404).json({ message: "Device not found" });
+    }
+
+    res.status(200).json(device);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching device data", error });
   }
 };

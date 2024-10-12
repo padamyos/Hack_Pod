@@ -45,9 +45,12 @@
 </template>
 
 <script>
+
 import axios from 'axios';
 
+
 export default {
+  name: 'ManageDevices',
   data() {
     return {
       devices: [],  // เก็บรายการอุปกรณ์ของผู้ใช้
