@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import { ref, onMounted, nextTick } from 'vue';
 import { Chart } from 'chart.js/auto';
+import { ref, watch, onMounted } from 'vue';
 
 export default {
   props: {
@@ -17,41 +17,39 @@ export default {
   },
   setup(props) {
     const canvas = ref(null);
+    let chartInstance = null;
 
-    onMounted(async () => {
-      await nextTick(); // รอให้ DOM ถูกสร้างเสร็จ
-
-      if (canvas.value) {
-        new Chart(canvas.value, {
-          type: 'line',
-          data: {
-            labels: props.chartData.labels, // ใช้ labels ที่ถูกต้อง
-            datasets: [
-              {
-                label: 'PM1',
-                data: props.chartData.datasets[0]?.data || [], // ตรวจสอบว่าข้อมูล PM1 ถูกส่งเข้ามาหรือไม่
-                borderColor: 'rgba(75, 192, 192, 1)',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderWidth: 2,
-                fill: true,
-              },
-              {
-                label: 'Temperature',
-                data: props.chartData.datasets[1]?.data || [], // ตรวจสอบว่าข้อมูล Temperature ถูกส่งเข้ามาหรือไม่
-                borderColor: 'rgba(255, 99, 132, 1)',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderWidth: 2,
-                fill: true,
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-          },
-        });
+    // ฟังก์ชันสำหรับสร้างกราฟใหม่
+    const createChart = () => {
+      if (chartInstance) {
+        chartInstance.destroy(); // ทำลายกราฟเก่า
       }
+      chartInstance = new Chart(canvas.value, {
+        type: 'line',
+        data: props.chartData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+        },
+      });
+    };
+
+    // เมื่อ component โหลดเสร็จ ให้สร้างกราฟ
+    onMounted(() => {
+      createChart();
     });
+
+    // ใช้ watch เพื่อจับการเปลี่ยนแปลงของ chartData และอัปเดตกราฟ
+    watch(
+      () => props.chartData,
+      () => {
+        if (chartInstance) {
+          chartInstance.data = props.chartData;
+          chartInstance.update(); // อัปเดตกราฟใหม่เมื่อข้อมูลเปลี่ยน
+        }
+      },
+      { deep: true }
+    );
 
     return {
       canvas,
@@ -59,7 +57,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 canvas {
