@@ -1,2 +1,4 @@
 -หน้าข่าว
 -admin view
+-web gpt
+	https://chatgpt.com/g/g-iYSeH3EAI-website-generator
