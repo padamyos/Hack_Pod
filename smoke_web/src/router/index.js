@@ -33,25 +33,26 @@ function isAdmin() {
 const routes = [
   
  
-
   {
     path: "/",
-    name: "Login",
-    component: Login,
-  },
-  
-  
-  {
-    path: "/home",
     name: "Home",
     component: Home,
 
   },
 
   {
+    path: "/login",
+    name: "Login",
+    component: Login,
+  },
+  
+  
+
+  {
     path: "/device",
     name: "ManageDevices",
     component: ManageDevices,
+    meta: { requiresAuth: true }, // กำหนด meta เพื่อระบุว่าหน้านี้ต้องการการล็อกอิน
   },
   
   {
@@ -104,7 +105,7 @@ router.beforeEach((to, from, next) => {
     }
   } else if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!isLoggedIn() ) {
-      next({ name: 'Login' });
+      next({ name: 'Home' });
     } else {
       next();
     }

@@ -21,4 +21,8 @@ router.post('/data/:deviceId', deviceController.addDeviceData);
 // เส้นทางสำหรับดึงข้อมูลใหม่จากอุปกรณ์
 router.get('/data/:deviceId', deviceController.getDeviceData);
 
+// เส้นทางสำหรับลบข้อมูลในอุปกรณ์
+router.delete('/clearData/:deviceId', deviceController.clearDeviceData);
+
+
 module.exports = router;

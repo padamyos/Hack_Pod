@@ -165,3 +165,24 @@ exports.getDeviceData = async (req, res) => {
     res.status(500).json({ message: "Error fetching device data", error });
   }
 };
+
+// ลบข้อมูลทั้งหมดใน array data ของอุปกรณ์
+exports.clearDeviceData = async (req, res) => {
+  const { deviceId } = req.params; // รับ deviceId จาก URL
+
+  try {
+    // หาอุปกรณ์ตาม deviceId
+    const device = await Device.findOne({ deviceId });
+    if (!device) {
+      return res.status(404).json({ message: 'Device not found' });
+    }
+
+    // ลบข้อมูลทั้งหมดใน array data
+    device.data = []; // ตั้งค่า data เป็น array ว่าง
+    await device.save(); // บันทึกการเปลี่ยนแปลงในฐานข้อมูล
+
+    res.status(200).json({ message: 'All device data cleared successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error clearing device data', error });
+  }
+};
