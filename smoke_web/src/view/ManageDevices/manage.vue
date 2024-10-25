@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto p-8">
+  <div class="container mx-auto p-8 pt-40">
     <h1 class="text-3xl font-bold mb-6">จัดการอุปกรณ์ของคุณ</h1>
 
     <!-- ฟอร์มสำหรับเพิ่มอุปกรณ์ใหม่ -->

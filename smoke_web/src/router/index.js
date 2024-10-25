@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import Login from "../view/Login.vue";
+import Policy from "../view/Policy.vue";
 import Home from "../view/Home.vue";
 
 import Dashboard from "../view/Dashbord.vue"
@@ -44,6 +45,11 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/policy",
+    name: "Policy",
+    component: Policy,
   },
   
   
@@ -105,7 +111,7 @@ router.beforeEach((to, from, next) => {
     }
   } else if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!isLoggedIn() ) {
-      next({ name: 'Home' });
+      next({ name: 'policy' });
     } else {
       next();
     }

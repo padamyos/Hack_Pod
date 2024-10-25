@@ -1,17 +1,3 @@
-<script>
-
-
-export default {
-    name: 'Home',
-    methods: {
-        showAlert() {
-            // Use sweetalert2
-            Vue.swal('Hello Vue world!!!');
-        },
-    },
-}
-</script>
-
 <template>
 
 
@@ -28,7 +14,7 @@ export default {
             </svg>
 
             <!-- เนื้อหา -->
-            <div class="relative z-10 flex flex-row bg-local  pt-20">
+            <div class="relative z-10 flex flex-row bg-local  pt-40">
                 <div class="basis-2/3 pl-28">
                     <button class="bg-gradient-to-r from-[#0019FF] to-[#FF0000] text-white p-2 rounded-xl">
                         HACK. POD. HACK8
@@ -67,14 +53,43 @@ export default {
 
         </div>
 
-        <div class=" bg-[#0099ff] h-80">
+        <div class=" bg-[#0099ff] h-80 text-black ">
 
         </div>
+
+        <div class="flex justify-center py-10" >
+            <div class="diff aspect-[16/16] w-6/12 ">
+                <div class="diff-item-1">
+                    <img alt="daisy" src="../assets/home/ปอดพัง.png" />
+                </div>
+                <div class="diff-item-2">
+                    <img alt="daisy"
+                        src="../assets/home/ปอด.png" />
+                </div>
+                <div class="diff-resizer"></div>
+            </div>
+        </div>
+
+
     </div>
 
 
 </template>
 
+
+<script>
+
+export default {
+    name: 'Home',
+    methods: {
+        showAlert() {
+            // Use sweetalert2
+            Vue.swal('Hello Vue world!!!');
+        },
+    },
+
+}
+</script>
 
 
 <style>

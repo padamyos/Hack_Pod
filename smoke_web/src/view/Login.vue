@@ -23,7 +23,17 @@
                     </label>
                     <input type="password" v-model="password" id="password" placeholder="กรุณาป้อนรหัสผ่าน"
                         class="w-full px-4 py-2 border rounded " />
+                </div>
 
+                <!-- ส่วน checkbox สำหรับนโยบายการใช้งาน -->
+                <div class="mb-4">
+                    <input type="checkbox" v-model="acceptPolicy" id="acceptPolicy" @change="handlePolicyChange" />
+                    <label for="acceptPolicy">
+                        ยอมรับ
+                        <RouterLink to="policy" class="btn btn-outline btn-primary ">
+                            นโยบายการใช้งาน
+                        </RouterLink>
+                    </label>
                 </div>
 
                 <button type="submit" class="bg-green-500 text-white w-full py-2 rounded">
@@ -44,14 +54,42 @@ export default
         name: 'Login',
         data() {
             return {
-         
                 email: '',   // Capture email input
                 password: '', // Capture password input
-                role: '',     // Capture role input
+                acceptPolicy: false, // สถานะของ checkbox นโยบายการใช้งาน
             };
         },
         methods: {
+            // method สำหรับแสดง popup ทันทีที่กด checkbox
+            handlePolicyChange() {
+                if (this.acceptPolicy) {
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'คุณยอมรับนโยบายการใช้งานแล้ว',
+                        text: 'ขอบคุณที่ยอมรับนโยบายของเรา',
+                        confirmButtonText: 'ตกลง'
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'คุณยังไม่ได้ยอมรับนโยบายการใช้งาน',
+                        text: 'โปรดยอมรับนโยบายการใช้งานก่อน',
+                        confirmButtonText: 'ตกลง'
+                    });
+                }
+            },
+
             async userLogin() {
+                if (!this.acceptPolicy) {
+                    // แสดง Swal แจ้งเตือนถ้าไม่ยอมรับนโยบาย
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'กรุณายอมรับนโยบายการใช้งาน',
+                        confirmButtonText: 'ตกลง'
+                    });
+                    return;
+                }
+
                 try {
                     const response = await axios.post('http://localhost:5000/users/login', {
                         email: this.email,
@@ -65,17 +103,7 @@ export default
                     localStorage.setItem('_id', response.data._id);
                     console.log(localStorage.getItem('_id'));
 
-                    // alert('User logged in successfully');
-
-                    // console.log(typeof (localStorage.getItem('role')));
                     const user = JSON.parse(localStorage.getItem('role'));
-                    
-                    // console.log(user);
-                    console.log('admin' == user);
-                    console.log(response.data);
-                  
-
-                    
                     Swal.fire({
                         icon: 'success',
                         title: 'Logged in successfully',
@@ -85,13 +113,10 @@ export default
                     if (user == 'admin') {
                         this.$router.push({ name: 'ChangeUser' });
                     } else {
-                        console.log(user);
                         this.$router.push({ name: 'Home' });
                     }
-                    // this.$router.push({ name: 'Home' });
                 } catch (err) {
                     console.error(err);
-
                     Swal.fire({
                         title: 'Error!',
                         text: 'Invalid email or password',
@@ -100,17 +125,6 @@ export default
                     })
                 }
             },
-
-
-
         },
-        
     }
-
-
-
 </script>
-
-<style>
-/* Add any custom styles here */
-</style>

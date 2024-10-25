@@ -1,10 +1,10 @@
 <template>
-  <div class="dashboard">
+  <div class="dashboard pt-32">
     <h1>Device Dashboard</h1>
 
     <div>
       <label for="deviceSelect">Select Device: </label>
-      <select id="deviceSelect" v-model="selectedDeviceId" @change="fetchDeviceData">
+      <select id="deviceSelect" v-model="selectedDeviceId" @change="fetchDeviceData" class=" border-solid border-2  ">
         <option v-for="device in devices" :key="device.deviceId" :value="device.deviceId">
           {{ device.position }} ({{ device.deviceId }})
         </option>
@@ -14,13 +14,24 @@
     <!-- เพิ่ม dropdown สำหรับการเลือกช่วงเวลา -->
     <div>
       <label for="timeRange">Select Time Range: </label>
-      <select id="timeRange" v-model="selectedTimeRange" @change="fetchDeviceData">
+      <select id="timeRange" v-model="selectedTimeRange" @change="fetchDeviceData " class=" border-solid border-2  ">
         <option value="day">Last 24 Hours</option>
         <option value="week">Last 7 Days</option>
         <option value="month">Last 30 Days</option>
         <option value="custom">Custom Range</option>
       </select>
     </div>
+
+    <!-- Custom Date Range Picker -->
+    <div v-if="selectedTimeRange === 'custom'">
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" v-model="customStartDate" @change="fetchDeviceData" />
+
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" v-model="customEndDate" @change="fetchDeviceData" />
+    </div>
+
+
 
     <div class="flex flex-col m-5">
       <!-- อุณหภูมิ -->
@@ -110,6 +121,9 @@ export default {
     const deviceData = ref([]);
 
     const selectedTimeRange = ref('day'); // ค่าเริ่มต้นเป็นวันล่าสุด (24 ชั่วโมงที่ผ่านมา)
+
+    const customStartDate = ref(dayjs().format('YYYY-MM-DD'));
+    const customEndDate = ref(dayjs().format('YYYY-MM-DD'));
 
     const chartData = ref({
       labels: [],
@@ -232,6 +246,10 @@ export default {
         filteredData = data.filter(d => dayjs(d.timestamp).isAfter(now.subtract(7, 'day')));
       } else if (selectedTimeRange.value === 'month') {
         filteredData = data.filter(d => dayjs(d.timestamp).isAfter(now.subtract(30, 'day')));
+      } else if (selectedTimeRange.value === 'custom') {
+        const startDate = dayjs(customStartDate.value).startOf('day');
+        const endDate = dayjs(customEndDate.value).endOf('day');
+        filteredData = data.filter(d => dayjs(d.timestamp).isBetween(startDate, endDate));
       }
 
       return filteredData;

@@ -1,5 +1,5 @@
 <template>
-  <div class="py-10 px-16" >
+  <div class="pt-40 px-16" >
     <div class="text-center text-4xl font-bold pb-5">
       <h1>User Management</h1>
     </div>

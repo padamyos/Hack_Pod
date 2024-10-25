@@ -1,8 +1,8 @@
 <template>
-    <div class="navbar bg-white">
+    <div class="navbar  bg-white fixed top-0 left-0 w-full z-20  shadow-md">
 
         <div class="flex-1">
-            <RouterLink to="/home" class="btn btn-ghost text-xl text-[#7300FF]">SMOKE DETECTOR</RouterLink>
+            <RouterLink to="/" class="btn btn-ghost text-xl text-[#7300FF]">SMOKE DETECTOR</RouterLink>
         </div>
         <div class="flex-none gap-2">
             <div class="form-control pr-10">
@@ -32,9 +32,9 @@
             </div>
             <div>
                 <a href="#"
-                    class="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">เกี่ยวกับ</a>
+                    class="btn btn-outline btn-primary mx-3">เกี่ยวกับ</a>
                 <a href="#"
-                    class="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">
+                    class="btn btn-outline btn-primary ">
                     ติดต่อ
                 </a>
                 <RouterLink to="device" class="btn btn-outline btn-primary mx-3 ">
