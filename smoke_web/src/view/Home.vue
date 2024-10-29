@@ -57,7 +57,11 @@
 
         </div>
 
-        <div class="flex justify-center py-10" >
+        
+        <information/>
+
+        <div>
+            <div class="flex justify-center py-10" >
             <div class="diff aspect-[16/16] w-6/12 ">
                 <div class="diff-item-1">
                     <img alt="daisy" src="../assets/home/ปอดพัง.png" />
@@ -69,15 +73,16 @@
                 <div class="diff-resizer"></div>
             </div>
         </div>
-
-
+        </div>
+        
     </div>
-
 
 </template>
 
 
-<script>
+<script >
+
+import information from '../components/Home/information.vue';
 
 export default {
     name: 'Home',
@@ -87,6 +92,9 @@ export default {
             Vue.swal('Hello Vue world!!!');
         },
     },
+    components: {
+        information,
+  },
 
 }
 </script>
