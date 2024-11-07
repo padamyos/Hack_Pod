@@ -32,7 +32,7 @@
     </div>
 
 
-
+   
     <div class="flex flex-col m-5">
       <!-- อุณหภูมิ -->
       <div class="card bg-base-100 image-full w-full h-48 shadow-xl my-10">
@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-
+      <card :title=String(latestPm1)  />
       <!-- PM1 -->
       <div class="card bg-base-100 image-full w-full h-48 shadow-xl  mb-10">
         <figure>
@@ -58,6 +58,7 @@
             <h2 class="card-title "> PM1</h2>
           </div>
         </div>
+        
       </div>
 
       <!-- Humidity -->
@@ -111,9 +112,11 @@ import { ref, onMounted, onUnmounted, watch } from 'vue';
 import LineChart from '../components/Chart/LineChart.vue';
 import dayjs from 'dayjs';
 
+
 export default {
   components: {
     LineChart,
+
   },
   setup() {
     const devices = ref([]);
@@ -274,7 +277,9 @@ export default {
       maxWeeklyData,
       fetchDeviceData,
     };
+ 
   },
+
 };
 </script>
 
