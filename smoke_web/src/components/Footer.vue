@@ -28,9 +28,9 @@
           
        
         <p>
-          สสส. สำนักงานสนับสนุนการสร้างเสริมสุขภาพ
+          สสส. สำนักงานสนับสนุนการสร้างเสริมสุขภาพ และ คิดดีไอดอล
           <br />
-          Providing reliable tech since 1992
+         
         </p>
       </aside>
       <nav class="md:place-self-center md:justify-self-end">
