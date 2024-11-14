@@ -201,8 +201,9 @@ export default {
       loading.value = true;
 
       try {
-        const response = await axios.get(`http://localhost:5000/devices/data/${selectedDeviceId.value}`);
-        deviceData.value = response.data.data || [];
+        // const response = await axios.get(`http://localhost:5000/devices/data/${selectedDeviceId.value}`);
+        const response = await axios.get(`http://localhost:5000/deviceData/${selectedDeviceId.value}`);
+        deviceData.value = (response.data || []);
 
         // กรองข้อมูลตามช่วงเวลาที่เลือก
         const filteredData = filterDataByTimeRange(deviceData.value);
@@ -279,6 +280,8 @@ export default {
     };
  
   },
+
+  
 
 };
 </script>
