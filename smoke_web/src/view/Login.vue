@@ -1,13 +1,19 @@
 <template>
     <div class="flex  justify-start  h-screen bg-[#7300ff] m-28 rounded-2xl ">
-        <div class=" items-center p-28">
+        <div class=" items-center m-60">
 
-            <div class="bg-white rounded-full p-56 ">
-                <h1 class=" text-black font-black ">Logo</h1>
+            <div class="avatar p-20 ">
+                <div class="ring-primary ring-offset-base-100 w-full rounded-full ring ring-offset-2">
+                    <img src="../assets/kidee.png" />
+                </div>
             </div>
+            <!-- <div class="bg-white rounded-full p-56 ">
+                <h1 class=" text-black font-black ">Logo</h1>
+                <img src="../assets/kidee.png" alt="Shoes">
+            </div> -->
         </div>
-        <div class="w-1/3 pt-36 ">
-            <h1 class="text-3xl font-bold mb-6 ">เข้าสู่ระบบ</h1>
+        <div class="w-1/3 pt-52 ">
+            <p class="text-4xl font-bold mb-6  text-center pt-20 ">เข้าสู่ระบบ</p>
             <form @submit.prevent="userLogin">
                 <div class="mb-4">
 
