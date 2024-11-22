@@ -1,6 +1,6 @@
 <template>
     <div class="flex  justify-start  h-screen bg-[#7300ff] m-28 rounded-2xl ">
-        <div class=" items-center m-60">
+        <div class=" items-center m-40 mt-60">
 
             <div class="avatar p-20 ">
                 <div class="ring-primary ring-offset-base-100 w-full rounded-full ring ring-offset-2">
@@ -12,7 +12,7 @@
                 <img src="../assets/kidee.png" alt="Shoes">
             </div> -->
         </div>
-        <div class="w-1/3 pt-52 ">
+        <div class="w-1/3 pt-52 pr-10">
             <p class="text-4xl font-bold mb-6  text-center pt-20 ">เข้าสู่ระบบ</p>
             <form @submit.prevent="userLogin">
                 <div class="mb-4">
@@ -36,13 +36,13 @@
                     <input type="checkbox" v-model="acceptPolicy" id="acceptPolicy" @change="handlePolicyChange" />
                     <label for="acceptPolicy">
                         ยอมรับ
-                        <RouterLink to="policy" class="btn btn-outline btn-primary ">
+                        <RouterLink to="policy" class="btn  btn-link btn-primary  text-base-100 ">
                             นโยบายการใช้งาน
                         </RouterLink>
                     </label>
                 </div>
 
-                <button type="submit" class="bg-green-500 text-white w-full py-2 rounded">
+                <button type="submit" class="bg-green-500 text-base-100 w-full py-2 rounded">
                     Login
                 </button>
             </form>
