@@ -1,8 +1,8 @@
 <template>
-    <div class="navbar  bg-base-100  fixed top-0 left-0 w-full z-20  shadow-md p-5">
+    <div class="navbar  bg-white fixed top-0 left-0 w-full z-20  shadow-md">
 
         <div class="flex-1">
-            <RouterLink to="/" class="btn btn-ghost text-xl ">SMOKEY KIDDETECTOR</RouterLink>
+            <RouterLink to="/" class="btn btn-ghost text-xl text-[#7300FF]">SMOKE DETECTOR</RouterLink>
         </div>
         <div class="flex-none gap-2">
             <div class="form-control pr-10">

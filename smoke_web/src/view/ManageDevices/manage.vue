@@ -14,13 +14,13 @@
         <input v-model="newDevice.position" type="text" id="position" class="border p-2 w-full" required />
       </div>
 
-      <!-- <div class="mb-4">
+      <div class="mb-4">
         <label for="status" class="block">Status:</label>
         <select v-model="newDevice.status" id="status" class="border p-2 w-full">
           <option value="active">Active</option>
           <option value="inactive">Inactive</option>
         </select>
-      </div> -->
+      </div>
 
       <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded">เพิ่มอุปกรณ์</button>
     </form>

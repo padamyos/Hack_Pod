@@ -17,7 +17,7 @@ export default {
   ],
   // กำหนด theme ให้กับ daisyUI
   daisyui: {
-    themes: ["light", "dark", "luxury"],
+    themes: ["light", "dark", "halloween"],
   },
 
 }
