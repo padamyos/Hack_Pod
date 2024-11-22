@@ -24,5 +24,17 @@ const DeviceSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
+=======
+  id: { type: Number, required: true , unique: true},
+  position: { type: String, required: true },
+  status: { type: String, required: true },
+  data: [{
+    date: { type: Date, required: true },
+    pm1: { type: Number, required: true },
+    pm2_5: { type: Number, required: true },
+    pm10: { type: Number, required: true },
+  }]
+});
+>>>>>>> Stashed changes
 
 module.exports = mongoose.model("Device", DeviceSchema);
