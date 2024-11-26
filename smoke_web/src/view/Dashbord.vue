@@ -376,9 +376,10 @@ export default {
 
       try {
         // const response = await axios.get(`http://localhost:5000/devices/data/${selectedDeviceId.value}`);
+        // const response = await axios.get(`http://localhost:5000/deviceData/summary/hourly/${selectedDeviceId.value}`);
         const response = await axios.get(`http://localhost:5000/deviceData/${selectedDeviceId.value}`);
         deviceData.value = (response.data || []);
-
+        console.log('deviceData:', deviceData.value);
         // กรองข้อมูลตามช่วงเวลาที่เลือก
         const filteredData = filterDataByTimeRange(deviceData.value);
         console.log('filteredData:', filteredData);
@@ -406,6 +407,8 @@ export default {
         chartData.value.labels = filteredData.map(data => new Date(data.timestamp).toLocaleString());
         chartData.value.datasets[0].data = filteredData.map(data => data.pm2_5 || 0);
         chartData.value.datasets[1].data = filteredData.map(data => data.temperature || 0);
+        // chartData.value.datasets[0].data = filteredData.map(data => data.avgTemperature || 0);
+        // chartData.value.datasets[1].data = filteredData.map(data => data.avgHumidity || 0);
       } catch (error) {
         console.error('Error fetching device data:', error);
       } finally {
